@@ -20,10 +20,13 @@ class MainActivity : AppCompatActivity(R.layout.activity_main) {
         myObserver = MyObserver()
         this.lifecycle.addObserver(myObserver)
         myLiveData = MyLiveData()
+
         binding.apply {
+
             myLiveData.get().observe(this@MainActivity, Observer {
                 tv.text = it
             })
+
             edit.addTextChangedListener {
                 myLiveData.set(it.toString())
             }
